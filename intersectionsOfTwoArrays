@@ -1,0 +1,55 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        LinkedList<Integer> ll = new LinkedList<Integer>();
+        LinkedList<Integer> ll1 = new LinkedList<Integer>();
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        
+        for(int i=0;i<nums1.length;i++){
+            ll1.add(nums1[i]);
+            }
+        LinkedList<Integer> lll = new LinkedList<Integer>();
+        for(int i=0;i<nums2.length;i++){
+            lll.add(nums2[i]);
+        }
+        if(ll1.size()>lll.size()||ll1.size()==lll.size()){
+            
+        
+        for(int i=0;i<lll.size();i++){
+            for(int j=0;j<ll1.size();j++){
+                
+                    if(ll1.get(j)==lll.get(i)){
+                        if(ll1.get(j)>=0&&lll.get(i)>=0){
+                        ll.add(lll.get(i));
+                        ll1.set(j, -1);
+                        lll.set(i, -1);
+                        }
+                }
+            }
+        }
+        }
+        if(ll1.size()<lll.size()){
+            for(int i=0;i<ll1.size();i++){
+                for(int j=0;j<lll.size();j++){
+                
+                    if(ll1.get(i)==lll.get(j)){
+                        if(ll1.get(i)>=0&&lll.get(j)>=0){
+                        ll.add(ll1.get(i));
+                        ll1.set(i, -1);
+                        lll.set(j, -1);
+                        }
+                }
+            }
+        }
+            
+        }
+        
+        int[] arr = new int[ll.size()];
+        for(int i=0;i<ll.size();i++){
+            arr[i]=ll.get(i);
+        }
+        return arr;
+        
+    }
+}//not functioning 
